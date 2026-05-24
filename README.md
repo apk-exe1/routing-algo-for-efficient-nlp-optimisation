@@ -1,8 +1,8 @@
-# Routing Algo for Efficient NLP Optimisation
+Routing Algo for Efficient NLP Optimisation
 
 An ultra-fast, highly optimized Kannada OCR Post-Processing and Spell Correction module. This project demonstrates how to scale an $O(N)$ linear dictionary search bottleneck down to an $O(\log N)$ powerhouse using advanced data structures and concurrency.
 
-## 🚀 Key Features
+Key Features
 
 * **BK-Trees (Burkhard-Keller Trees):** Replaces naive linear dictionary scans with metric space pruning using Levenshtein distance, instantly eliminating irrelevant branches to achieve $O(\log N)$ search speeds.
 * **LRU (Least Recently Used) Caching:** Memorizes frequent word corrections (e.g., conjunctions, common nouns) to completely bypass tree traversal on repetitive hits.
@@ -10,13 +10,13 @@ An ultra-fast, highly optimized Kannada OCR Post-Processing and Spell Correction
 * **Adaptive Ranking:** Intelligent tie-breaking for equidistant spelling corrections based on language frequency statistics.
 * **Interactive Evaluation Dashboard:** A beautiful, dependency-free Vanilla HTML/JS/CSS frontend to visualize latency comparisons, cache hits, thread utilization, and module performance breakdowns in real-time.
 
-## 🛠️ Tech Stack
+Tech Stack
 
-* **Backend:** Python 3, FastAPI, Uvicorn, Levenshtein
-* **Frontend:** Vanilla HTML5, CSS3, JavaScript, Chart.js
-* **Data:** Custom 100k+ Kannada word synthetic/real dictionary
+Backend: Python 3, FastAPI, Uvicorn, Levenshtein
+Frontend: Vanilla HTML5, CSS3, JavaScript, Chart.js
+Data: Custom 100k+ Kannada word synthetic/real dictionary
 
-## ⚙️ Setup & Installation
+Setup & Installation
 
 1. **Clone the repository:**
    ```bash
@@ -35,7 +35,7 @@ An ultra-fast, highly optimized Kannada OCR Post-Processing and Spell Correction
    python generate_dictionary.py
    ```
 
-## 🏃‍♂️ Running the Application
+Running the Application
 
 1. **Start the FastAPI Backend:**
    ```bash
