@@ -1,0 +1,302 @@
+:root {
+    --bg-color: #0b0f19;
+    --panel-bg: #111827;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-color: #1e293b;
+    --primary-blue: #2563eb;
+    --primary-hover: #1d4ed8;
+    --green-accent: #22c55e;
+    --blue-accent: #3b82f6;
+    --font-family: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.container {
+    background-color: var(--panel-bg);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.header .subtitle {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* Left Column */
+.left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.panel {
+    background-color: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.panel h2 {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.panel h2 .bar {
+    width: 4px;
+    height: 14px;
+    background-color: var(--primary-blue);
+    border-radius: 2px;
+    display: inline-block;
+}
+
+textarea {
+    width: 100%;
+    height: 180px;
+    background-color: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-main);
+    padding: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    resize: none;
+    margin-bottom: 1rem;
+    font-family: inherit;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.btn-standard {
+    background-color: #334155;
+    color: #f8fafc;
+}
+
+.btn-standard:hover {
+    background-color: #475569;
+}
+
+.btn-optimized {
+    background-color: var(--primary-blue);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+}
+
+.btn-optimized:hover {
+    background-color: var(--primary-hover);
+}
+
+.output-container, .analysis-container {
+    background-color: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+}
+
+.analysis-container {
+    min-height: 120px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.placeholder {
+    color: var(--primary-blue);
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.analysis-content {
+    color: var(--text-muted);
+    line-height: 1.6;
+    width: 100%;
+}
+
+.analysis-content strong {
+    color: var(--text-main);
+}
+
+/* Right Column */
+.right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.metric-card {
+    background-color: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Grid span for the first and last cards */
+.metric-card:nth-child(1) {
+    grid-column: span 1;
+}
+
+.metric-card:nth-child(7) {
+    grid-column: span 1;
+}
+
+.metric-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+}
+
+.metric-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.text-normal {
+    color: var(--text-main);
+}
+
+.highlight-green {
+    border-bottom: 2px solid var(--green-accent);
+}
+
+.highlight-green .metric-value {
+    color: var(--green-accent);
+}
+
+.highlight-blue {
+    border-bottom: 2px solid var(--blue-accent);
+}
+
+.highlight-blue .metric-value {
+    color: var(--blue-accent);
+}
+
+.chart-title {
+    font-size: 0.75rem;
+    color: var(--blue-accent);
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.chart-container {
+    background-color: #0f172a;
+    border-radius: 6px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    position: relative;
+    height: 200px;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.output-container.success {
+    justify-content: flex-start;
+    align-items: flex-start;
+    animation: fadeIn 0.5s ease-out;
+    color: var(--text-main);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
+}

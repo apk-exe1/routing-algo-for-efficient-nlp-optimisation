@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kannada OCR Optimization</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Kannada OCR Transliteration & Optimization</h1>
+            <p class="subtitle">ALGORITHM EVALUATION DASHBOARD</p>
+        </header>
+
+        <main class="dashboard">
+            <!-- Left Column -->
+            <div class="left-col">
+                <section class="panel">
+                    <h2><span class="bar"></span> INPUT TEXT</h2>
+                    <textarea id="inputText">ಕನ್ನಡ ಭಾಷೆಯು ದಕ್ಷಿಣ ಭಾರತದ ಕರ್ನಾಟಕ ರಾಜ್ಯದಲ್ಲಿ ಪ್ರಮುಖವಾಗಿ
+ಮಾತನಾಡಲ್ಪಡುವ ಭಾಷೆಯಾಗಿದೆ. ಇದು ದ್ರಾವಿಡ ಭಾಷಾ ಪರಿವಾರಕ್ಕೆ ಸೇರಿದೆ
+ಮತ್ತು ಅತ್ಯಂತ ಪ್ರಾಚೀನ ಭಾಷೆಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ. ತಂತ್ರಜ್ಞಾನದ
+ಬೆಳವಣಿಗೆಯಿಂದಾಗಿ, ಕನ್ನಡದಲ್ಲಿಯೂ ಡಿಜಿಟಲ್ ಬದಲಾವಣೆಗಳು ನಡೆಯುತ್ತಿವೆ.
+ಆದರೆ, ಕೆಲವು ಬಾರಿ ಒಸಿಆರ್ ತಂತ್ರಾಂಶಗಳು ಅಕ್ಷರ ದೋಷಗಳನ್ನು ಮಾಡಬಹುದು.
+ಈ ತಪ್ಪುಗಳನ್ನು ವೇಗವಾಗಿ ಮತ್ತು ನಿಖರವಾಗಿ ಸರಿಪಡಿಸಲು ನಾವು ಈಗ ಬಿ-ಕೆ ಟ್ರೀ
+(BK Tree), ಅಡಾಪ್ಟಿವ್ ರ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ಎಲ್.ಆರ್.ಯು (LRU) ಕ್ಯಾಚಿಂಗ್
+ಬಳಸಿ ಹೊಸ ಆಪ್ಟಿಮೈಸ್ಡ್ ಅಲ್ಗಾರಿದಮ್ ಅಭಿವೃದ್ಧಿಪಡಿಸಿದ್ದೇವೆ.</textarea>
+                    
+                    <div class="buttons">
+                        <button id="btnStandard" class="btn-standard">Run Standard Algorithm</button>
+                        <button id="btnOptimized" class="btn-optimized">Run Optimized Algorithm</button>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2><span class="bar"></span> FINAL CORRECTED OUTPUT</h2>
+                    <div id="outputContainer" class="output-container">
+                        <span class="placeholder">Awaiting execution...</span>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <h2><span class="bar"></span> WORD-BY-WORD ANALYSIS</h2>
+                    <div id="analysisContainer" class="analysis-container">
+                        <span class="placeholder">Analyzing text...</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-col">
+                <section class="panel">
+                    <h2><span class="bar"></span> DASHBOARD METRICS</h2>
+                    
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <span class="metric-label">ALGORITHM USED</span>
+                            <span id="valAlgo" class="metric-value text-normal">Awaiting...</span>
+                        </div>
+                        <div class="metric-card highlight-green">
+                            <span class="metric-label">LATENCY (MS)</span>
+                            <span id="valLatency" class="metric-value">0 ms</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">WORDS PROCESSED</span>
+                            <span id="valWords" class="metric-value text-normal">0</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">CACHE HITS</span>
+                            <span id="valCache" class="metric-value text-normal">0</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">PARALLEL THREADS</span>
+                            <span id="valThreads" class="metric-value text-normal">0</span>
+                        </div>
+                        <div class="metric-card">
+                            <span class="metric-label">TIME COMPLEXITY</span>
+                            <span id="valComplexity" class="metric-value text-normal">---</span>
+                        </div>
+                        <div class="metric-card highlight-blue">
+                            <span class="metric-label">THROUGHPUT (WORDS/SEC)</span>
+                            <span id="valThroughput" class="metric-value">0</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h2 style="margin-bottom: 0; font-size: 1.1em; color: #38bdf8;"><span class="bar"></span> MODULE PERFORMANCE BREAKDOWN</h2>
+                        <span style="color: #94a3b8; font-size: 1.2em; cursor: pointer;">⋮</span>
+                    </div>
+                    
+                    <div id="modulePerformanceContainer" style="margin-bottom: 30px;">
+                        <!-- Custom HTML bars will be injected here -->
+                    </div>
+                    
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; margin-top: 40px;">
+                        <h2 style="margin-bottom: 0; font-size: 1.1em; color: #38bdf8;"><span class="bar"></span> THREAD UTILIZATION</h2>
+                        <span style="color: #94a3b8; font-size: 1.2em; cursor: pointer;">⋮</span>
+                    </div>
+                    
+                    <div class="chart-container" style="height: 200px;">
+                        <canvas id="threadChart"></canvas>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
